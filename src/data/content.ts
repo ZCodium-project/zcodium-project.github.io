@@ -14,17 +14,21 @@ export interface WorkItem {
 
 export interface Copy {
   nav: {
+    downloads: string;
     compare: string;
     changes: string;
     next: string;
   };
   hero: {
     badges: [string, string];
-    title: string;
+    titleFixed: string;
+    titleRotating: string[];
     lead: string;
-    downloadLabel: string;
+    download: {
+      label: string;
+      fallback: string;
+    };
     osSuffix: string;
-    viewSource: string;
     hints: {
       macos: string;
       windows: string;
@@ -32,6 +36,14 @@ export interface Copy {
       other: string;
     };
     allVersions: string;
+    viewSource: string;
+    screenshotAlt: string;
+  };
+  showcase: {
+    kicker: string;
+    title: string;
+    body: string;
+    alt: string;
   };
   compare: {
     kicker: string;
@@ -55,6 +67,19 @@ export interface Copy {
     title: string;
     items: WorkItem[];
   };
+  downloads: {
+    kicker: string;
+    title: string;
+    note: string;
+    empty: string;
+    allLink: string;
+    groups: {
+      macos: string;
+      windows: string;
+      linux: string;
+      cli: string;
+    };
+  };
   footer: {
     disclaimerTitle: string;
     disclaimerBefore: string;
@@ -70,17 +95,26 @@ export interface Copy {
 export const copy: Record<Lang, Copy> = {
   zh: {
     nav: {
+      downloads: "下载",
       compare: "对比",
-      changes: "改了什么",
-      next: "接下来",
+      changes: "改动",
+      next: "持续",
     },
     hero: {
       badges: ["独立审计 · 非官方 Fork", "持续跟踪上游"],
-      title: "我们审计 ZCode 代码。",
-      lead: "这个仓库 fork 自上游开源代码。监控与遥测已经全部移除，上游改动逐提交审阅，只同步无风险的部分；发行包都从这里的源码构建。",
-      downloadLabel: "下载",
+      titleFixed: "我们审计 ZCode 代码，",
+      titleRotating: [
+        "也审计它连了谁。",
+        "也审计它传了什么。",
+        "也审计它留下了什么。",
+        "然后自己构建、自己发布。",
+      ],
+      lead: "ZCodium 是一个全新的 ZCode 发行版：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里；所有官方服务默认关闭，需要哪个再单独打开。",
+      download: {
+        label: "下载 ZCodium",
+        fallback: "前往 GitHub Releases 下载",
+      },
       osSuffix: " 版",
-      viewSource: "查看源码",
       hints: {
         macos: "未签名的 .dmg：拖入“应用程序”后，用 sudo xattr -rd com.apple.quarantine 放行一次",
         windows: "未签名的 .exe：安装前先执行 Unblock-File 解除阻止",
@@ -88,6 +122,14 @@ export const copy: Record<Lang, Copy> = {
         other: "CLI 发行包，需要 Node.js 24",
       },
       allVersions: "全部版本与安装命令",
+      viewSource: "查看源码",
+      screenshotAlt: "ZCodium 完成任务后的对话与改动摘要",
+    },
+    showcase: {
+      kicker: "Inside",
+      title: "工具调用、文件改动、审批，全都摊开给你看",
+      body: "文件改动带 diff，终端命令带上下文；每次要动你的项目之前，先弹窗征求许可——批准粒度可以是一次、一个项目，或全部放行。",
+      alt: "ZCodium 在改动文件前弹出权限确认",
     },
     compare: {
       kicker: "Compare",
@@ -133,16 +175,16 @@ export const copy: Record<Lang, Copy> = {
       ],
     },
     current: {
-      kicker: "This release",
-      title: "这个版本改了什么",
+      kicker: "Changes",
+      title: "ZCodium 改了什么",
       items: [
         {
           title: "移除全部监控与遥测",
           body: "ARMS RUM、OTLP 上报、崩溃采集、资源与网络采样、UI 埋点全部删除，约 2.6 万行；另外加了防回归检查，防止这些出口被重新引入。",
         },
         {
-          title: "换成自己的品牌",
-          body: "应用名、窗口标题、关于对话框、应用图标都改成了 ZCodium，界面文案也一并更新。",
+          title: "官方服务默认全部关闭",
+          body: "账号登录、反馈、编码套餐、官方 MCP、插件市场等官方接口默认关闭，设置里可以按需逐个打开。应用不替你连接任何服务。",
         },
         {
           title: "审计敏感路径",
@@ -150,13 +192,13 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: "接通构建与发布",
-          body: "GitHub Actions 负责构建安装包和部署本站。发版走 Release workflow，填一个版本号就能出包。",
+          body: "GitHub Actions 从仓库源码构建安装包、部署本站；应用内更新指向本仓库的 GitHub Releases，走自己的发布链路。",
         },
       ],
     },
     next: {
-      kicker: "Next",
-      title: "接下来怎么走",
+      kicker: "Ongoing",
+      title: "我们会持续审计",
       items: [
         {
           title: "逐提交审阅上游",
@@ -172,6 +214,19 @@ export const copy: Record<Lang, Copy> = {
         },
       ],
     },
+    downloads: {
+      kicker: "Downloads",
+      title: "全部下载",
+      note: "全部产物由本仓库构建并发布在 GitHub Releases；文件未签名，首次安装需要按提示放行一次。",
+      empty: "正在读取最新版本；也可以直接去 GitHub Releases 查看。",
+      allLink: "在 GitHub 查看全部版本与校验文件",
+      groups: {
+        macos: "macOS",
+        windows: "Windows",
+        linux: "Linux",
+        cli: "CLI 发行包",
+      },
+    },
     footer: {
       disclaimerTitle: "免责声明",
       disclaimerBefore:
@@ -186,17 +241,26 @@ export const copy: Record<Lang, Copy> = {
   },
   en: {
     nav: {
+      downloads: "Download",
       compare: "Compare",
       changes: "Changes",
-      next: "Next",
+      next: "Ongoing",
     },
     hero: {
       badges: ["Independent audit · unofficial fork", "Tracking upstream"],
-      title: "We audit ZCode.",
-      lead: "This repo forks the upstream source. Monitoring and telemetry are gone, upstream changes are reviewed commit by commit, and only risk-free parts get synced. Every artifact is built from the audited source here.",
-      downloadLabel: "Download",
+      titleFixed: "We audit ZCode's code,",
+      titleRotating: [
+        "and what it connects to.",
+        "and what it sends.",
+        "and what it leaves behind.",
+        "then we build and ship it ourselves.",
+      ],
+      lead: "ZCodium is a fresh ZCode distribution: rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here. Every vendor service is off by default — turn on only what you need.",
+      download: {
+        label: "Download ZCodium",
+        fallback: "Get it from GitHub Releases",
+      },
       osSuffix: "",
-      viewSource: "View source",
       hints: {
         macos: "Unsigned .dmg: after installing, run sudo xattr -rd com.apple.quarantine once",
         windows: "Unsigned .exe: run Unblock-File before installing",
@@ -204,6 +268,14 @@ export const copy: Record<Lang, Copy> = {
         other: "CLI distribution, needs Node.js 24",
       },
       allVersions: "All releases and install commands",
+      viewSource: "View source",
+      screenshotAlt: "A finished ZCodium task with its change summary",
+    },
+    showcase: {
+      kicker: "Inside",
+      title: "Tool calls, diffs and approvals, all out in the open",
+      body: "File edits come with diffs, terminal runs with context. Before touching your project, ZCodium asks — approve once, for the project, or grant full access.",
+      alt: "ZCodium asking for permission before editing a file",
     },
     compare: {
       kicker: "Compare",
@@ -249,16 +321,16 @@ export const copy: Record<Lang, Copy> = {
       ],
     },
     current: {
-      kicker: "This release",
-      title: "What this release changed",
+      kicker: "Changes",
+      title: "What ZCodium changes",
       items: [
         {
           title: "Removed all monitoring and telemetry",
           body: "ARMS RUM, OTLP reporting, crash capture, resource and network sampling, UI instrumentation — about 26k lines deleted, with regression checks that keep those exits closed.",
         },
         {
-          title: "Rebranded to ZCodium",
-          body: "App name, window titles, About dialog, app icons and the UI copy all use the audit identity now.",
+          title: "Vendor services off by default",
+          body: "Account sign-in, feedback, coding plans, official MCP and the plugin marketplace are all off by default, with per-service switches in Settings. The app connects to nothing unless you say so.",
         },
         {
           title: "Audited the sensitive paths",
@@ -266,13 +338,13 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: "Wired up builds and releases",
-          body: "GitHub Actions builds the installers and deploys this site. Releases run through the Release workflow with a version number.",
+          body: "GitHub Actions builds the installers from this source and deploys this site; in-app updates point at this repo's GitHub Releases.",
         },
       ],
     },
     next: {
-      kicker: "Next",
-      title: "What happens next",
+      kicker: "Ongoing",
+      title: "We keep auditing",
       items: [
         {
           title: "Review every upstream commit",
@@ -287,6 +359,19 @@ export const copy: Record<Lang, Copy> = {
           body: "Every sync produces a new audited release built from this repository's source.",
         },
       ],
+    },
+    downloads: {
+      kicker: "Downloads",
+      title: "All downloads",
+      note: "Every artifact is built from this repository's source and published on GitHub Releases. The files are unsigned — allow them once on first install as prompted.",
+      empty: "Loading the latest release; you can also head straight to GitHub Releases.",
+      allLink: "All releases and checksums on GitHub",
+      groups: {
+        macos: "macOS",
+        windows: "Windows",
+        linux: "Linux",
+        cli: "CLI build",
+      },
     },
     footer: {
       disclaimerTitle: "Disclaimer",

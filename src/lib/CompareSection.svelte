@@ -6,7 +6,7 @@
   const t = $derived(copy[i18n.lang]);
 </script>
 
-<section id="compare" class="section section-alt">
+<section id="compare" class="section">
   <div class="wrap">
     <p class="kicker">{t.compare.kicker}</p>
     <h2 class="section-title">{t.compare.title}</h2>

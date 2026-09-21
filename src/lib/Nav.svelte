@@ -5,6 +5,7 @@
 
   const t = $derived(copy[i18n.lang]);
   const links = $derived([
+    { href: "#downloads", label: t.nav.downloads },
     { href: "#compare", label: t.nav.compare },
     { href: "#current", label: t.nav.changes },
     { href: "#next", label: t.nav.next },

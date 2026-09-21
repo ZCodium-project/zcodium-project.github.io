@@ -1,8 +1,10 @@
 <script lang="ts">
   import Nav from "./lib/Nav.svelte";
   import Hero from "./lib/Hero.svelte";
+  import Showcase from "./lib/Showcase.svelte";
   import CompareSection from "./lib/CompareSection.svelte";
   import WorkSection from "./lib/WorkSection.svelte";
+  import AllDownloads from "./lib/AllDownloads.svelte";
   import SiteFooter from "./lib/SiteFooter.svelte";
   import { copy } from "./data/content";
   import { i18n } from "./lib/i18n.svelte";
@@ -13,13 +15,16 @@
 <Nav />
 <main id="top">
   <Hero />
+  <Showcase />
   <CompareSection />
   <WorkSection
     id="current"
     kicker={t.current.kicker}
     title={t.current.title}
     items={t.current.items}
+    alt
   />
   <WorkSection id="next" kicker={t.next.kicker} title={t.next.title} items={t.next.items} />
+  <AllDownloads />
 </main>
 <SiteFooter />
