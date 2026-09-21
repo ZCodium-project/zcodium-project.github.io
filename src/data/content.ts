@@ -44,6 +44,7 @@ export interface Copy {
     kicker: string;
     title: string;
     scrollHint: string;
+    note: string;
     headers: {
       item: string;
       audit: string;
@@ -120,6 +121,7 @@ export const copy: Record<Lang, Copy> = {
       kicker: "Compare",
       title: "和官方版本的区别",
       scrollHint: "表格可左右滑动查看",
+      note: "注：“官方客户端 / 官方开源版”两列的信息来自公开报道与技术分析（出处见仓库 README 的“背景”章节）；“ZCodium”一列为本仓库代码的审计结果。",
       headers: {
         item: "对比项",
         audit: "ZCodium（本仓库）",
@@ -130,13 +132,13 @@ export const copy: Record<Lang, Copy> = {
         {
           item: "监控与遥测",
           audit: "全部移除（约 2.6 万行），并加防回归检查",
-          client: "全套默认开启，开关管不到打包上传",
+          client: "据公开报道默认全套开启，界面开关不影响打包上传",
           oss: "与闭源版相同",
         },
         {
           item: "仓库上传逻辑",
           audit: "已移除",
-          client: "有（直到 2026-09-18 被曝光）",
+          client: "有（据 2026-09-18 的公开技术分析）",
           oss: "已移除（自 2026-09-21 起）",
         },
         {
@@ -148,7 +150,7 @@ export const copy: Record<Lang, Copy> = {
         {
           item: "构建透明度",
           audit: "GitHub Actions 从仓库源码透明构建，产物随 Release 发布",
-          client: "官方二进制，构建不可复现",
+          client: "官方二进制，无法独立复核构建",
           oss: "不提供公开构建",
         },
         {
@@ -256,6 +258,7 @@ export const copy: Record<Lang, Copy> = {
       kicker: "Compare",
       title: "How it compares with upstream",
       scrollHint: "Swipe the table sideways",
+      note: "Note: the “official client / official OSS” columns come from public reporting and technical analyses (sources in the repository README); the “ZCodium” column reflects the audit of this repository's code.",
       headers: {
         item: "Item",
         audit: "ZCodium (this repo)",
@@ -266,13 +269,13 @@ export const copy: Record<Lang, Copy> = {
         {
           item: "Monitoring and telemetry",
           audit: "All removed (~26k lines), with regression checks",
-          client: "Everything on by default; the switches never stopped packaging or uploads",
+          client: "Reportedly on by default; UI switches do not affect the packaging/upload path",
           oss: "Same as the closed-source client",
         },
         {
           item: "Repository upload logic",
           audit: "Removed",
-          client: "Present (until the 2026-09-18 report)",
+          client: "Present (per the public technical analysis of 2026-09-18)",
           oss: "Removed (since 2026-09-21)",
         },
         {
@@ -284,7 +287,7 @@ export const copy: Record<Lang, Copy> = {
         {
           item: "Build transparency",
           audit: "GitHub Actions builds transparently from this repo; artifacts ship with releases",
-          client: "Vendor binaries, not reproducible",
+          client: "Vendor binaries; builds cannot be independently verified",
           oss: "No public build",
         },
         {

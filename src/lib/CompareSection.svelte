@@ -33,5 +33,6 @@
         </tbody>
       </table>
     </div>
+    <p class="mt-3 text-[12.5px] leading-relaxed text-slate-500">{t.compare.note}</p>
   </div>
 </section>
