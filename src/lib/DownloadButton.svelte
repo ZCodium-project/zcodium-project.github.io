@@ -59,15 +59,7 @@
       : "",
   );
 
-  const installHint = $derived(
-    os === "macos"
-      ? t.hero.hints.macos
-      : os === "windows"
-        ? t.hero.hints.windows
-        : os === "linux"
-          ? t.hero.hints.linux
-          : t.hero.hints.other,
-  );
+  // 只有 macOS 需要安装提示：Windows 的 SmartScreen 弹窗点“仍要运行”即可，不需要引导文案。
 </script>
 
 <div class="flex flex-col items-center gap-3">
@@ -96,6 +88,9 @@
     </a>
   </div>
   <p class="max-w-[560px] text-[13px] text-slate-500">
-    {installHint} · <a class="text-sky-400 hover:underline" href={releasesUrl}>{t.hero.allVersions}</a>
+    {#if os === "macos"}{t.hero.installHint} · {/if}<a
+      class="text-sky-400 hover:underline"
+      href={releasesUrl}>{t.hero.allVersions}</a
+    >
   </p>
 </div>

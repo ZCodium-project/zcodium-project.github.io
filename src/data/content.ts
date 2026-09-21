@@ -29,12 +29,7 @@ export interface Copy {
       fallback: string;
     };
     osSuffix: string;
-    hints: {
-      macos: string;
-      windows: string;
-      linux: string;
-      other: string;
-    };
+    installHint: string;
     allVersions: string;
     viewSource: string;
     screenshotAlt: string;
@@ -109,18 +104,13 @@ export const copy: Record<Lang, Copy> = {
         "也审计它留下了什么。",
         "然后自己构建、自己发布。",
       ],
-      lead: "ZCodium 是一个全新的 ZCode 发行版：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里；所有官方服务默认关闭，需要哪个再单独打开。",
+      lead: "ZCodium 是一个全新的 ZCode 发行版：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里。",
       download: {
         label: "下载 ZCodium",
         fallback: "前往 GitHub Releases 下载",
       },
       osSuffix: " 版",
-      hints: {
-        macos: "未签名的 .dmg：拖入“应用程序”后，用 sudo xattr -rd com.apple.quarantine 放行一次",
-        windows: "未签名的 .exe：安装前先执行 Unblock-File 解除阻止",
-        linux: "未签名的 .AppImage：chmod +x 后直接运行",
-        other: "CLI 发行包，需要 Node.js 24",
-      },
+      installHint: "未签名的 .dmg：拖入“应用程序”后，用 sudo xattr -rd com.apple.quarantine 放行一次",
       allVersions: "全部版本与安装命令",
       viewSource: "查看源码",
       screenshotAlt: "ZCodium 完成任务后的对话与改动摘要",
@@ -176,7 +166,7 @@ export const copy: Record<Lang, Copy> = {
     },
     current: {
       kicker: "Changes",
-      title: "ZCodium 改了什么",
+      title: "ZCodium 比 ZCode 官方改了什么",
       items: [
         {
           title: "移除全部监控与遥测",
@@ -184,7 +174,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: "官方服务默认全部关闭",
-          body: "账号登录、反馈、编码套餐、官方 MCP、插件市场等官方接口默认关闭，设置里可以按需逐个打开。应用不替你连接任何服务。",
+          body: "账号登录、反馈、编码套餐、官方 MCP、插件市场等官方接口默认关闭，设置里可逐个开关。打开任意一个都会连接 ZCode 官方服务器，如无必要请保持关闭。",
         },
         {
           title: "审计敏感路径",
@@ -255,18 +245,13 @@ export const copy: Record<Lang, Copy> = {
         "and what it leaves behind.",
         "then we build and ship it ourselves.",
       ],
-      lead: "ZCodium is a fresh ZCode distribution: rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here. Every vendor service is off by default — turn on only what you need.",
+      lead: "ZCodium is a fresh ZCode distribution: rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here.",
       download: {
         label: "Download ZCodium",
         fallback: "Get it from GitHub Releases",
       },
       osSuffix: "",
-      hints: {
-        macos: "Unsigned .dmg: after installing, run sudo xattr -rd com.apple.quarantine once",
-        windows: "Unsigned .exe: run Unblock-File before installing",
-        linux: "Unsigned .AppImage: chmod +x and run",
-        other: "CLI distribution, needs Node.js 24",
-      },
+      installHint: "Unsigned .dmg: after installing, run sudo xattr -rd com.apple.quarantine once",
       allVersions: "All releases and install commands",
       viewSource: "View source",
       screenshotAlt: "A finished ZCodium task with its change summary",
@@ -322,7 +307,7 @@ export const copy: Record<Lang, Copy> = {
     },
     current: {
       kicker: "Changes",
-      title: "What ZCodium changes",
+      title: "What ZCodium changes vs. official ZCode",
       items: [
         {
           title: "Removed all monitoring and telemetry",
@@ -330,7 +315,7 @@ export const copy: Record<Lang, Copy> = {
         },
         {
           title: "Vendor services off by default",
-          body: "Account sign-in, feedback, coding plans, official MCP and the plugin marketplace are all off by default, with per-service switches in Settings. The app connects to nothing unless you say so.",
+          body: "Account sign-in, feedback, coding plans, official MCP and the plugin marketplace are all off by default, each with its own switch in Settings. Turning one on connects to ZCode's official servers — keep them off unless you need them.",
         },
         {
           title: "Audited the sensitive paths",
