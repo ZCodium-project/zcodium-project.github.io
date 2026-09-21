@@ -21,8 +21,7 @@ export interface Copy {
   };
   hero: {
     badges: [string, string];
-    titleFixed: string;
-    titleRotating: string[];
+    titleLines: [string, string];
     lead: string;
     download: {
       label: string;
@@ -97,13 +96,7 @@ export const copy: Record<Lang, Copy> = {
     },
     hero: {
       badges: ["独立审计 · 非官方 Fork", "持续跟踪上游"],
-      titleFixed: "我们审计 ZCode 代码，",
-      titleRotating: [
-        "也审计它连了谁。",
-        "也审计它传了什么。",
-        "也审计它留下了什么。",
-        "然后自己构建、自己发布。",
-      ],
+      titleLines: ["ZCode 社区纯净版", "重新审查，真开源！"],
       lead: "ZCodium 是一个全新的 ZCode 发行版，保留了多智能体协作、任务编排、插件与技能、MCP 工具接入等优秀能力：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里。ZCodium 由社区强力驱动，与智谱（Zhipu）没有任何关系。",
       download: {
         label: "下载 ZCodium",
@@ -238,13 +231,7 @@ export const copy: Record<Lang, Copy> = {
     },
     hero: {
       badges: ["Independent audit · unofficial fork", "Tracking upstream"],
-      titleFixed: "We audit ZCode's code,",
-      titleRotating: [
-        "and what it connects to.",
-        "and what it sends.",
-        "and what it leaves behind.",
-        "then we build and ship it ourselves.",
-      ],
+      titleLines: ["ZCode Community Clean Edition", "Re-audited. Truly open source."],
       lead: "ZCodium is a fresh distribution of ZCode that keeps the strong parts — multi-agent collaboration, task orchestration, plugins and skills, MCP tooling — rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here. ZCodium is community-driven and has no affiliation with Zhipu.",
       download: {
         label: "Download ZCodium",

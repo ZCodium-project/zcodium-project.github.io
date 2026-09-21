@@ -1,29 +1,9 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   import DownloadButton from "./DownloadButton.svelte";
   import { copy } from "../data/content";
   import { i18n } from "./i18n.svelte";
 
   const t = $derived(copy[i18n.lang]);
-  const rotating = $derived(t.hero.titleRotating);
-
-  let rotIndex = $state(0);
-
-  onMount(() => {
-    // 尊重系统的减少动态偏好：不轮换时保持显示第一句。
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const timer = window.setInterval(() => {
-      rotIndex = (rotIndex + 1) % rotating.length;
-    }, 2600);
-    return () => window.clearInterval(timer);
-  });
-
-  function rotatorClass(index: number): string {
-    const total = rotating.length;
-    if (index === rotIndex % total) return "is-active";
-    if (index === (rotIndex - 1 + total) % total) return "is-up";
-    return "";
-  }
 </script>
 
 <section class="hero-glow hero-dots relative overflow-hidden pt-20 pb-16">
@@ -43,14 +23,8 @@
     </div>
 
     <h1 class="hero-title">
-      <span class="block">{t.hero.titleFixed}</span>
-      <span class="hero-rotator">
-        {#each rotating as phrase, index (phrase)}
-          <span class="hero-rotator-item {rotatorClass(index)}" aria-hidden={index !== rotIndex}
-            >{phrase}</span
-          >
-        {/each}
-      </span>
+      <span class="block">{t.hero.titleLines[0]}</span>
+      <span class="block">{t.hero.titleLines[1]}</span>
     </h1>
 
     <p class="mx-auto mt-6 mb-9 max-w-[720px] text-[clamp(15px,1.6vw,17px)] text-slate-400">
