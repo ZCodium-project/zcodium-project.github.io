@@ -1,5 +1,12 @@
 export type Lang = "zh" | "en";
 
+export const repoUrl = "https://github.com/ZCodium-project/ZCodium";
+export const upstreamUrl = "https://github.com/zai-org/ZCode";
+export const releasesUrl = "https://github.com/ZCodium-project/ZCodium/releases";
+export const licenseUrl = `${repoUrl}/blob/main/LICENSE`;
+export const apacheLicenseUrl = `${repoUrl}/blob/main/LICENSE-APACHE`;
+export const thirdPartyNoticesUrl = `${repoUrl}/blob/main/THIRD-PARTY-NOTICES.md`;
+
 export interface CompareRow {
   item: string;
   audit: string;
@@ -76,6 +83,15 @@ export interface Copy {
       cli: string;
     };
   };
+  license: {
+    kicker: string;
+    title: string;
+    intro: string;
+    items: { name: string; value: string; href: string }[];
+    note: string;
+    noteLinkLabel: string;
+    noteHref: string;
+  };
   footer: {
     disclaimerTitle: string;
     disclaimerBefore: string;
@@ -100,7 +116,7 @@ export const copy: Record<Lang, Copy> = {
       badges: ["独立审计 · 非官方 Fork", "持续跟踪上游"],
       titleLines: ["ZCode 社区纯净版", "重新审查，真开源！"],
       lead: "ZCodium 是一个全新的 ZCode 发行版，保留了多智能体协作、任务编排、插件与技能、MCP 工具接入等优秀能力：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里。",
-      leadNote: "代码以 MIT 协议开源。ZCodium 基于北京智谱华章科技股份有限公司（Z.AI）开源发布的 ZCode 代码独立审计、独立构建，与该公司没有隶属、授权或背书关系。",
+      leadNote: "第一方代码以 MIT 协议开源，上游代码保持 Apache-2.0（详见下方“开源协议”）。ZCodium 基于北京智谱华章科技股份有限公司（Z.AI）开源发布的 ZCode 代码独立审计、独立构建，与该公司没有隶属、授权或背书关系。",
       download: {
         label: "下载 ZCodium",
         fallback: "前往 GitHub Releases 下载",
@@ -214,6 +230,31 @@ export const copy: Record<Lang, Copy> = {
         cli: "CLI 发行包",
       },
     },
+    license: {
+      kicker: "License",
+      title: "开源协议",
+      intro: "ZCodium 的代码按来源适用不同协议：",
+      items: [
+        {
+          name: "本仓库第一方代码：审计、改动与新增部分",
+          value: "MIT",
+          href: licenseUrl,
+        },
+        {
+          name: "上游 ZCode 代码（源自 zai-org/ZCode）",
+          value: "Apache-2.0（保留原始版权与署名）",
+          href: apacheLicenseUrl,
+        },
+        {
+          name: "第三方组件与素材",
+          value: "各自的许可条款",
+          href: thirdPartyNoticesUrl,
+        },
+      ],
+      note: "完整声明（衍生关系、修改记录与风险提示）见",
+      noteLinkLabel: "NOTICE（中文）",
+      noteHref: `${repoUrl}/blob/main/NOTICE.zh-CN.md`,
+    },
     footer: {
       disclaimerTitle: "免责声明",
       disclaimerBefore:
@@ -237,7 +278,7 @@ export const copy: Record<Lang, Copy> = {
       badges: ["Independent audit · unofficial fork", "Tracking upstream"],
       titleLines: ["ZCode Community Clean Edition", "Re-audited. Truly open source."],
       lead: "ZCodium is a fresh distribution of ZCode that keeps the strong parts — multi-agent collaboration, task orchestration, plugins and skills, MCP tooling — rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here.",
-      leadNote: "The code is MIT-licensed. ZCodium is independently audited and built from the ZCode source code open-sourced by Z.AI Co., Ltd. (Beijing Zhipu Huazhang Technology Co., Ltd.), and has no affiliation, authorization or endorsement from the company.",
+      leadNote: "First-party code is MIT-licensed; upstream code stays Apache-2.0 (see “Open-source licensing” below). ZCodium is independently audited and built from the ZCode source code open-sourced by Z.AI Co., Ltd. (Beijing Zhipu Huazhang Technology Co., Ltd.), and has no affiliation, authorization or endorsement from the company.",
       download: {
         label: "Download ZCodium",
         fallback: "Get it from GitHub Releases",
@@ -351,6 +392,31 @@ export const copy: Record<Lang, Copy> = {
         cli: "CLI build",
       },
     },
+    license: {
+      kicker: "License",
+      title: "Open-source licensing",
+      intro: "Licenses apply to different parts of the codebase by origin:",
+      items: [
+        {
+          name: "First-party code in this repo: audit, changes and additions",
+          value: "MIT",
+          href: licenseUrl,
+        },
+        {
+          name: "Upstream ZCode code (from zai-org/ZCode)",
+          value: "Apache-2.0, original copyright and attribution retained",
+          href: apacheLicenseUrl,
+        },
+        {
+          name: "Third-party components and assets",
+          value: "their own license terms",
+          href: thirdPartyNoticesUrl,
+        },
+      ],
+      note: "For the full statement (derivative work, modification record and risk notes) see",
+      noteLinkLabel: "NOTICE",
+      noteHref: `${repoUrl}/blob/main/NOTICE.md`,
+    },
     footer: {
       disclaimerTitle: "Disclaimer",
       disclaimerBefore:
@@ -364,7 +430,3 @@ export const copy: Record<Lang, Copy> = {
     },
   },
 };
-
-export const repoUrl = "https://github.com/ZCodium-project/ZCodium";
-export const upstreamUrl = "https://github.com/zai-org/ZCode";
-export const releasesUrl = "https://github.com/ZCodium-project/ZCodium/releases";

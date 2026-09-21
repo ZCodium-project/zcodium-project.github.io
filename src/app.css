@@ -228,6 +228,39 @@ body {
   word-break: break-all;
 }
 
+/* ---------- 开源协议 ---------- */
+.license-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid rgb(255 255 255 / 0.09);
+  border-radius: 14px;
+  background: rgb(255 255 255 / 0.02);
+  padding: 18px;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.license-card:hover {
+  border-color: rgb(255 255 255 / 0.25);
+  background: rgb(255 255 255 / 0.04);
+}
+
+.license-card-value {
+  font-size: 17px;
+  font-weight: 700;
+  color: #7dd3fc;
+  line-height: 1.4;
+}
+
+.license-card-name {
+  font-size: 13.5px;
+  color: #9aa4b2;
+  line-height: 1.6;
+}
+
 /* ---------- 对比表 ---------- */
 .compare-table {
   width: 100%;

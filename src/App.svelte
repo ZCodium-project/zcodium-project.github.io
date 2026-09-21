@@ -5,6 +5,7 @@
   import CompareSection from "./lib/CompareSection.svelte";
   import WorkSection from "./lib/WorkSection.svelte";
   import AllDownloads from "./lib/AllDownloads.svelte";
+  import LicenseSection from "./lib/LicenseSection.svelte";
   import SiteFooter from "./lib/SiteFooter.svelte";
   import { copy } from "./data/content";
   import { i18n } from "./lib/i18n.svelte";
@@ -26,5 +27,6 @@
   />
   <WorkSection id="next" kicker={t.next.kicker} title={t.next.title} items={t.next.items} />
   <AllDownloads />
+  <LicenseSection />
 </main>
 <SiteFooter />
