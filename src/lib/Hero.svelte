@@ -22,13 +22,19 @@
       </span>
     </div>
 
-    <h1 class="hero-title">
+    <h1 class="hero-title" class:hero-title-en={i18n.lang === "en"}>
       <span class="block">{t.hero.titleLines[0]}</span>
-      <span class="block">{t.hero.titleLines[1]}</span>
+      <span class="block" class:hero-title-tail-punct={i18n.lang === "zh"}
+        >{t.hero.titleLines[1]}</span
+      >
     </h1>
 
-    <p class="mx-auto mt-6 mb-9 max-w-[720px] text-[clamp(15px,1.6vw,17px)] text-slate-400">
+    <p class="mx-auto mt-6 max-w-[720px] text-[clamp(15px,1.6vw,17px)] text-slate-400">
       {t.hero.lead}
+    </p>
+
+    <p class="mx-auto mt-3 mb-9 max-w-[720px] text-[14px] text-slate-500">
+      {t.hero.leadNote}
     </p>
 
     <DownloadButton />

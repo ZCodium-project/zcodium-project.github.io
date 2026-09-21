@@ -93,6 +93,18 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #f4f6fa;
+  text-align: center;
+}
+
+/* 英文标题字符更多，用更小的字号保证每句一行。 */
+.hero-title-en {
+  font-size: clamp(30px, 4.8vw, 48px);
+}
+
+/* 中文标题行末尾若带全角标点（如“！”），标点只占字格左侧，居中的行盒会因此
+   视觉左偏；这里按半个字格整体右移，做一次标点悬挂补偿。 */
+.hero-title-tail-punct {
+  margin-left: 0.6em;
 }
 
 /* 两行标题依次上移淡入，入场后保持静止。 */
