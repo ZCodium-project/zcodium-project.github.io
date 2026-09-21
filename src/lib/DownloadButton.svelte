@@ -1,6 +1,5 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import GithubIcon from "./GithubIcon.svelte";
   import { copy, releasesUrl, repoUrl } from "../data/content";
   import { i18n } from "./i18n.svelte";
   import { fetchLatestRelease, formatSize, type ReleaseAsset } from "../data/releases";
@@ -83,8 +82,21 @@
       class="inline-flex items-center gap-2 rounded-[13px] border border-white/15 bg-white/[0.03] px-5 py-[13px] text-sm font-semibold text-slate-100 no-underline transition-colors hover:border-white/30 hover:bg-white/[0.06]"
       href={repoUrl}
     >
-      <GithubIcon class="h-[15px] w-[15px]" />
-      {t.hero.viewSource}
+      <svg
+        class="h-[15px] w-[15px]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path
+          d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"
+        />
+      </svg>
+      {t.hero.star}
     </a>
   </div>
   <p class="max-w-[560px] text-[13px] text-slate-500">

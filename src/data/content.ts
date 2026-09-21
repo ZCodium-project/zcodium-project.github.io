@@ -31,7 +31,7 @@ export interface Copy {
     osSuffix: string;
     installHint: string;
     allVersions: string;
-    viewSource: string;
+    star: string;
     screenshotAlt: string;
   };
   showcase: {
@@ -104,7 +104,7 @@ export const copy: Record<Lang, Copy> = {
         "也审计它留下了什么。",
         "然后自己构建、自己发布。",
       ],
-      lead: "ZCodium 是一个全新的 ZCode 发行版：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里。",
+      lead: "ZCodium 是一个全新的 ZCode 发行版，保留了多智能体协作、任务编排、插件与技能、MCP 工具接入等优秀能力：从最新公开源码出发，独立审计、移除去监控与遥测后重新构建。桌面安装包、CLI 发行包、改动记录和审计说明都在这里。ZCodium 由社区强力驱动，与智谱（Zhipu）没有任何关系。",
       download: {
         label: "下载 ZCodium",
         fallback: "前往 GitHub Releases 下载",
@@ -112,7 +112,7 @@ export const copy: Record<Lang, Copy> = {
       osSuffix: " 版",
       installHint: "未签名的 .dmg：拖入“应用程序”后，用 sudo xattr -rd com.apple.quarantine 放行一次",
       allVersions: "全部版本与安装命令",
-      viewSource: "查看源码",
+      star: "Star",
       screenshotAlt: "ZCodium 完成任务后的对话与改动摘要",
     },
     showcase: {
@@ -245,7 +245,7 @@ export const copy: Record<Lang, Copy> = {
         "and what it leaves behind.",
         "then we build and ship it ourselves.",
       ],
-      lead: "ZCodium is a fresh ZCode distribution: rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here.",
+      lead: "ZCodium is a fresh distribution of ZCode that keeps the strong parts — multi-agent collaboration, task orchestration, plugins and skills, MCP tooling — rebuilt from the latest public source after an independent audit, with monitoring and telemetry removed. Desktop installers, a CLI build, the change log and the audit notes all live here. ZCodium is community-driven and has no affiliation with Zhipu.",
       download: {
         label: "Download ZCodium",
         fallback: "Get it from GitHub Releases",
@@ -253,7 +253,7 @@ export const copy: Record<Lang, Copy> = {
       osSuffix: "",
       installHint: "Unsigned .dmg: after installing, run sudo xattr -rd com.apple.quarantine once",
       allVersions: "All releases and install commands",
-      viewSource: "View source",
+      star: "Star",
       screenshotAlt: "A finished ZCodium task with its change summary",
     },
     showcase: {
